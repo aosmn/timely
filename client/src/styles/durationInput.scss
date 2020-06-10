@@ -1,0 +1,25 @@
+input.time-input-part {
+  border: 0;
+  width: 6rem;
+  // width: 1.5rem;
+  margin: 0 4px;
+  background-color: rgba(0,0,0,0);
+  padding: 0;
+  text-align: center;
+  // border: solid 1px red;
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.duration-picker-container {
+  background-color: #ececec;
+  border-radius: 5px;
+  padding: 8px 10px
+}
+
+.react-datetime-picker__wrapper {
+  border-radius: 5px !important;
+  padding: 10px;
+  border: 1px solid #ccc !important;
+}
