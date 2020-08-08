@@ -97,7 +97,7 @@ function EntryItem({padZero, entry, handleDeleteEntry, handleEditEntry}) {
     setEndTime(endTime);
   }
   return (
-    <div key={entry.id} className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
+    <li key={entry.id} className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
       <div className='d-flex'>
         {isEditTitle ? 
           <div className='form-group mb-0'>
@@ -147,43 +147,26 @@ function EntryItem({padZero, entry, handleDeleteEntry, handleEditEntry}) {
           </i>
         </button>
       </div>
-    </div>
+    </li>
   )
 };
 
-export default function EntriesList({ entries, handleDeleteEntry, handleEditEntry }) {
-  const padZero = (n) => {
-    return String('00' + n).slice(-2);
-  }
+// export default function EntriesList({ entries, handleDeleteEntry, handleEditEntry }) {
+//   const padZero = (n) => {
+//     return String('00' + n).slice(-2);
+//   }
 
-  // const deleteEntry = (e) => {  
-  //   const result = window.confirm('Are you sure you want to delete this entry?');
-  //   if (result) {
-  //     handleDeleteEntry(e.target.dataset.id);
-      
-  //   }
-  // }
-
-  // const onChangeTitle = (e) => {
-  //   setTitle(e.target.value);
-  // }
-
-  // const onClickTitle = (e) => {
-  //   setIsEditTitle(true)
-  //   setWhichEntry(e.target.dataset.id)
-  // }
-
-  if (entries && entries.length > 0) {
+//   if (entries && entries.length > 0) {
     
-  const entriesList = entries.map(entry => {    
-    return <EntryItem key={entry.id} padZero={padZero} entry={entry} handleDeleteEntry={handleDeleteEntry} handleEditEntry={handleEditEntry}/>
-  })
+//   const entriesList = entries.map(entry => {    
+//     return <EntryItem key={entry.id} padZero={padZero} entry={entry} handleDeleteEntry={handleDeleteEntry} handleEditEntry={handleEditEntry}/>
+//   })
 
-  return (
-    <div className='list-group col-12'>
-      {entriesList}
-    </div>
-  )
-  }
-  return null
-}
+//   return (
+//     <ul className='list-group col-12 pr-0'>
+//       {entriesList}
+//     </ul>
+//   )
+//   }
+//   return null
+// }

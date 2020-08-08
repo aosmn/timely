@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
-import EntriesList from './EntriesList';
+import EntriesList from './EntriesList/EntriesList';
 
 import '../styles/timer.scss';
 export default function Timer({ db }) {
@@ -180,7 +180,8 @@ export default function Timer({ db }) {
   // }
 
   return (
-    <div className='current-entry row d-flex align-items-center'>
+    <div className='row d-flex align-items-center'>
+    <div className='current-entry d-flex align-items-center col-12 p-0 my-5'>
       <div className='col pl-0'>
         <input 
           type='text'
@@ -190,45 +191,51 @@ export default function Timer({ db }) {
           value={title}
           onChange={onChangeTitle}/>
       </div>
-      <div className='timer col'>
+      <div className='row'>
+        <button className='btn btn-primary mr-3 ml-4 d-flex align-items-center' onClick={toggle}>
+          {isActive ? 
+          <i className='material-icons-round'>
+            pause
+          </i>
+          : 
+          <i className='material-icons-round'>
+            play_arrow
+          </i>}
+        </button>
+        {
+          isActive || !isStarted ? 
+          <button disabled={!isStarted} className='btn btn-danger mr-3 d-flex align-items-center' onClick={stop}>
+            <i className='material-icons-round'>
+              stop
+            </i>
+          </button>
+          :
+          <button className='btn btn-success py-0 mr-3 d-flex align-items-center' onClick={save}>
+            <i className='material-icons-round'>
+              save
+            </i>
+          </button>
+        }
+      </div>
+      <div className='timer d-flex align-items-center'>
         <div className='time'>
           {padZero(hours)}:{padZero(minutes)}:{padZero(seconds)}
           {/* .{padZero(milliSeconds)} */}
         </div>
-      </div>
-
-        <div className='col-12 row mb-5'>
-          <button className='btn btn-link text-light ml-auto mr-3' onClick={reset}>
-            Reset
-          </button>
-          <button className='btn btn-primary mr-3 d-flex align-items-center' onClick={toggle}>
-            {isActive ? 
-            <i className='material-icons-round'>
-              pause
+        {isStarted ? 
+          <button className='btn m-0 btn-delete' onClick={reset}>
+            <i class='material-icons-round d-flex'>
+            delete
             </i>
-            : 
-            <i className='material-icons-round'>
-              play_arrow
-            </i>}
           </button>
-          {
-            isActive || !isStarted ? 
-            <button disabled={!isStarted} className='btn btn-danger mr-3 d-flex align-items-center' onClick={stop}>
-              <i className='material-icons-round'>
-                stop
-              </i>
-            </button>
-            :
-            <button className='btn btn-success py-0 mr-3 d-flex' onClick={save}>
-              <i className='material-icons-round'>
-                save
-              </i>
-            </button>
-          }
-        </div>
-        {db ? 
-        <EntriesList entries={entries} handleDeleteEntry={handleDeleteEntry} handleEditEntry={handleEditEntry}/>
         : null}
+      </div>
+    </div>
+
+      
+      {db ? 
+      <EntriesList entries={entries} handleDeleteEntry={handleDeleteEntry} handleEditEntry={handleEditEntry}/>
+      : null}
     </div>
   );
 }
