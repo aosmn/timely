@@ -4,7 +4,7 @@ import '../styles/app.scss';
 
 // import Form from './Form'
 import Timer from './Timer';
-import Joyride from 'react-joyride';
+import Joyride, { STATUS } from 'react-joyride';
 
 class App extends Component {
   constructor(props) {
@@ -31,23 +31,36 @@ class App extends Component {
           target: '.step-4',
           content: 'Timer duration is shown here',
         },
-        {
-          target: '.step-5',
-          content: 'Your time entries will be shown here',
-        },
+        // {
+        //   target: '.step-5',
+        //   content: 'Your time entries will be shown here',
+        // },
       ]
     };
   }
-  
+  handleJoyrideCallback = data => {
+    const { status } = data;
+    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      window.localStorage.setItem('timelyTutorialDone', true)
+    }
+  };
   render() {
     const { steps } = this.state;
     return (
       <div className=''>
-        <Joyride
-          steps={steps}
-          continuous={true}
-          // spotlightClicks={true}
-        />
+
+        {
+          window.localStorage.getItem('timelyTutorialDone') ? null :
+          <Joyride
+            steps={steps}
+            continuous={true}
+            callback={this.handleJoyrideCallback}
+            disableOverlayClose={true}
+            showProgress={true}
+            showSkipButton={true}
+            // spotlightClicks={true}
+          />
+        }
         <nav class="navbar navbar-light bg-primary">
           <div className='container'>
             <a class="navbar-brand d-flex step-0" href="#">
