@@ -185,14 +185,14 @@ export default function Timer({ db }) {
       <div className='col pl-0'>
         <input 
           type='text'
-          className='form-control'
+          className='form-control step-1'
           id='title'
           placeholder='What are you working on?'
           value={title}
           onChange={onChangeTitle}/>
       </div>
       <div className='row'>
-        <button className='btn btn-primary mr-3 ml-4 d-flex align-items-center' onClick={toggle}>
+        <button className='btn btn-primary mr-3 ml-4 d-flex align-items-center step-2' onClick={toggle}>
           {isActive ? 
           <i className='material-icons-round'>
             pause
@@ -204,7 +204,7 @@ export default function Timer({ db }) {
         </button>
         {
           isActive || !isStarted ? 
-          <button disabled={!isStarted} className='btn btn-danger mr-3 d-flex align-items-center' onClick={stop}>
+          <button disabled={!isStarted} className='btn btn-danger mr-3 d-flex align-items-center step-3' onClick={stop}>
             <i className='material-icons-round'>
               stop
             </i>
@@ -217,7 +217,7 @@ export default function Timer({ db }) {
           </button>
         }
       </div>
-      <div className='timer d-flex align-items-center'>
+      <div className='timer d-flex align-items-center step-4'>
         <div className='time'>
           {padZero(hours)}:{padZero(minutes)}:{padZero(seconds)}
           {/* .{padZero(milliSeconds)} */}

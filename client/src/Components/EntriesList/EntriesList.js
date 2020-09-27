@@ -13,7 +13,7 @@ export default function EntriesList({ entries, handleDeleteEntry, handleEditEntr
   })
 
   return (
-    <ul className='list-group col-12 pr-0'>
+    <ul className='list-group col-12 pr-0 step-5 '>
       {entriesList}
     </ul>
   )
