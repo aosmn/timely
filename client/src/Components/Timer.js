@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import EntriesList from './EntriesList/EntriesList';
 
@@ -14,7 +13,7 @@ export default function Timer({ db }) {
   const [title, setTitle] = useState('');
   const [entries, setEntries] = useState([]);
   const [startTime, setStartTime] = useState(new Date());
-  const [endTime, setEndTime] = useState(new Date());
+  // const [endTime, setEndTime] = useState(new Date());
 
   function toggle() {
     if (!isActive) {
@@ -224,7 +223,7 @@ export default function Timer({ db }) {
         </div>
         {isStarted ? 
           <button className='btn m-0 btn-delete' onClick={reset}>
-            <i class='material-icons-round d-flex'>
+            <i className='material-icons-round d-flex'>
             delete
             </i>
           </button>

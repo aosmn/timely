@@ -10,7 +10,7 @@ class DurationSelector extends Component {
     this.state = {
       startTime: props.entry.startTime || new Date(),
       endTime: props.entry.endTime || new Date(),
-      regexp : /^[0-9\:\b]+$/,
+      regexp : /^[0-9:\b]+$/,
       seconds: props.entry.seconds,
       minutes: props.entry.minutes,
       hours: props.entry.hours,
@@ -22,7 +22,7 @@ class DurationSelector extends Component {
 
     const value = e.target.value;
     const values = value.split(':')
-    const id = e.target.id;
+    // const id = e.target.id;
     const seconds = parseInt(values.pop(), 10) || 0;
     const minutes = parseInt(values.pop(), 10) || 0;
     const hours = parseInt(values.pop(), 10) || 0;
@@ -58,7 +58,7 @@ class DurationSelector extends Component {
   onBlur = e => {
     const value = e.target.value;
     const values = value.split(':')
-    const id = e.target.id;
+    // const id = e.target.id;
     const seconds = parseInt(values.pop(), 10) || 0;
     const minutes = parseInt(values.pop(), 10) || 0;
     const hours = parseInt(values.pop(), 10) || 0;
@@ -140,7 +140,7 @@ class DurationSelector extends Component {
     return String('00' + n).slice(-2);
   }
   render() {
-    const {trigger, entry, onCancel, onClick} = this.props;
+    const { onCancel } = this.props;
 
     return (
           <div className='duration-picker-container d-flex align-items-center'>

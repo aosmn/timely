@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import TimeInput from '../TimeInput';
 import moment from 'moment';
 import Duration from '../DurationSelector';
 import {padZero} from '../../Helpers/TimerHelpers'
@@ -8,15 +7,15 @@ export default function EntryItem({entry, handleDeleteEntry, handleEditEntry}) {
   const [title, setTitle] = useState(entry.title);
   const [startTime, setStartTime] = useState(entry.startTime);
   const [endTime, setEndTime] = useState(entry.endTime);
-  const [seconds, setSeconds] = useState(entry.seconds);
-  const [minutes, setMinutes] = useState(entry.minutes);
-  const [hours, setHours] = useState(entry.hours);
+  const [, setSeconds] = useState(entry.seconds);
+  const [, setMinutes] = useState(entry.minutes);
+  const [, setHours] = useState(entry.hours);
   const [isEditTitle, setIsEditTitle] = useState(false);
   const [isEditDuration, setIsEditDuration] = useState(false);
 
   let titleInput = null;
-  let startTimeInput = null;
-  let endTimeInput = null;
+  // let startTimeInput = null;
+  // let endTimeInput = null;
   // const [whichEntry, setWhichEntry] = useState('');
 
   const deleteEntry = (e) => {  
@@ -60,13 +59,13 @@ export default function EntryItem({entry, handleDeleteEntry, handleEditEntry}) {
     }    
   }
 
-  const onChangeStartTime = (date) => {
-    setStartTime(date)
-  }
+  // const onChangeStartTime = (date) => {
+  //   setStartTime(date)
+  // }
 
-  const onChangeEndTime = (date) => {
-    setEndTime(date)
-  }
+  // const onChangeEndTime = (date) => {
+  //   setEndTime(date)
+  // }
 
   const onClickDuration = (e) => {
     setIsEditDuration(true);
